@@ -268,18 +268,18 @@ mod tests {
         assert_eq!(part2(&contents), 467835)
     }
 
-    // #[test]
-    // fn part2_input2() {
-    //     let file_path: &Path = Path::new("inputs/day3.txt");
+    #[test]
+    fn part2_input2() {
+        let file_path: &Path = Path::new("inputs/day3.txt");
 
-    //     let contents = fs::read_to_string(&file_path).expect(
-    //         format!(
-    //             "Should have been able to read the file at file path: {:?}",
-    //             &file_path
-    //         )
-    //         .as_str(),
-    //     );
+        let contents = fs::read_to_string(&file_path).expect(
+            format!(
+                "Should have been able to read the file at file path: {:?}",
+                &file_path
+            )
+            .as_str(),
+        );
 
-    //     todo!("Setup test input 2 for part2")
-    // }
+        assert_eq!(part2(&contents), 83279367)
+    }
 }

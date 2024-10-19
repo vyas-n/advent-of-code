@@ -38,7 +38,6 @@ mod tests {
     // #[test]
     // fn part1_input2() {
     //     let file_path: &Path = Path::new("inputs/day#.txt");
-
     //     let contents = fs::read_to_string(&file_path).expect(
     //         format!(
     //             "Should have been able to read the file at file path: {:?}",
@@ -47,7 +46,7 @@ mod tests {
     //         .as_str(),
     //     );
 
-    //     todo!("Setup test input 2 for part1")
+    //     assert_eq!(part2(&contents), todo!("Setup test output 2 for part1"))
     // }
 
     // #[test]
@@ -69,6 +68,6 @@ mod tests {
     //         .as_str(),
     //     );
 
-    //     todo!("Setup test input 2 for part2")
+    //     assert_eq!(part2(&contents), todo!("Setup test output 2 for part2"))
     // }
 }
