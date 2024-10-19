@@ -1,6 +1,8 @@
 use std::{cmp::max, fs, path::Path};
 
 fn main() {
+    let contents: String = todo!("Setup test input 1 for part1");
+
     // let file_path: &Path = Path::new("inputs/day#.txt");
 
     // let contents = fs::read_to_string(&file_path).expect(
@@ -11,15 +13,7 @@ fn main() {
     //     .as_str(),
     // );
 
-    // let limit_red = 12;
-    // let limit_green = 13;
-    // let limit_blue = 14;
-
-    // println!(
-    //     "part 1: {}",
-    //     part1(&contents, &limit_red, &limit_green, &limit_blue)
-    // );
-    // println!("part 2: {}", part2(&contents));
+    println!("Answer: {}", part1(&contents))
 }
 
 fn part1(input: &str) -> u32 {
@@ -36,7 +30,9 @@ mod tests {
 
     // #[test]
     // fn part1_input1() {
-    //     todo!("Setup test input 1 for part1")
+    //     let contents: String = todo!("Setup test input 1 for part1");
+
+    //     assert_eq!(part1(&contents), todo!("Setup test output 1 for part1"))
     // }
 
     // #[test]
@@ -56,7 +52,9 @@ mod tests {
 
     // #[test]
     // fn part2_input1() {
-    //     todo!("Setup test input 1 for part2")
+    //     let contents: String = todo!("Setup test input 1 for part2");
+
+    //     assert_eq!(part1(&contents), todo!("Setup test output 1 for part2"))
     // }
 
     // #[test]
