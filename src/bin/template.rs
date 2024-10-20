@@ -1,4 +1,5 @@
-use std::{cmp::max, fs, path::Path};
+use std::fs;
+use std::path::Path;
 
 fn main() {
     let contents: String = todo!("Setup test input 1 for part1");
@@ -46,14 +47,14 @@ mod tests {
     //         .as_str(),
     //     );
 
-    //     assert_eq!(part2(&contents), todo!("Setup test output 2 for part1"))
+    //     assert_eq!(part1(&contents), todo!("Setup test output 2 for part1"))
     // }
 
     // #[test]
     // fn part2_input1() {
     //     let contents: String = todo!("Setup test input 1 for part2");
 
-    //     assert_eq!(part1(&contents), todo!("Setup test output 1 for part2"))
+    //     assert_eq!(part2(&contents), todo!("Setup test output 1 for part2"))
     // }
 
     // #[test]
