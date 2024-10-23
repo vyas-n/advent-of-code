@@ -2,9 +2,9 @@ use std::fs;
 use std::path::Path;
 
 fn const_contents() -> String {
-    let contents: String = todo!();
+    let contents: &str = todo!();
 
-    contents
+    contents.to_string()
 }
 
 fn file_contents() -> String {
