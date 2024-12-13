@@ -27,11 +27,11 @@ fn main() {
     println!("Answer: {}", part1(&contents))
 }
 
-fn part1(input: &str) -> u32 {
+fn part1(input: &str) -> i32 {
     todo!("Setup fn part1")
 }
 
-fn part2(input: &str) -> u32 {
+fn part2(input: &str) -> i32 {
     todo!("Setup fn part2")
 }
 
