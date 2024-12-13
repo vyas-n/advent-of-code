@@ -14,7 +14,7 @@ fn const_contents() -> String {
 }
 
 fn file_contents() -> String {
-    let file_path: &Path = Path::new("yr-2024/inputs/day1.txt");
+    let file_path: &Path = Path::new("inputs/day1.txt");
 
     let contents = fs::read_to_string(&file_path).expect(
         format!(
@@ -69,12 +69,12 @@ mod tests {
         assert_eq!(part1(&contents), 11)
     }
 
-    // #[test]
-    // fn part1_input2() {
-    //     let contents = file_contents();
+    #[test]
+    fn part1_input2() {
+        let contents = file_contents();
 
-    //     assert_eq!(part1(&contents), todo!("Setup test output 2 for part1"))
-    // }
+        assert_eq!(part1(&contents), 2176849)
+    }
 
     // #[test]
     // fn part2_input1() {
