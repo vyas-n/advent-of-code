@@ -151,10 +151,10 @@ mod tests {
         assert_eq!(part2(&contents), 4)
     }
 
-    // #[test]
-    // fn part2_input2() {
-    //     let contents = file_contents();
+    #[test]
+    fn part2_input2() {
+        let contents = file_contents();
 
-    //     assert_eq!(part2(&contents), todo!("Setup test output 2 for part2"))
-    // }
+        assert_eq!(part2(&contents), 544)
+    }
 }
