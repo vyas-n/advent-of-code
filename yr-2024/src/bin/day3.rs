@@ -1,6 +1,8 @@
 use std::fs;
 use std::path::Path;
 
+use regex::Regex;
+
 fn const_contents() -> String {
     let contents: &str = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
 
@@ -22,13 +24,35 @@ fn file_contents() -> String {
 }
 
 fn main() {
-    let contents: String = const_contents();
+    let contents: String = file_contents();
 
     println!("Answer: {}", part1(&contents))
 }
 
+struct Mul {
+    num1: i32,
+    num2: i32,
+}
+
+impl From<&str> for Mul {
+    fn from(value: &str) -> Self {
+        let re = Regex::new(r"[0-9]+").unwrap();
+        let mut iter = re.find_iter(value);
+
+        Mul {
+            num1: iter.next().unwrap().as_str().parse().unwrap(),
+            num2: iter.next().unwrap().as_str().parse().unwrap(),
+        }
+    }
+}
+
 fn part1(input: &str) -> i32 {
-    todo!("Setup fn part1")
+    let re: Regex = Regex::new(r"mul\([0-9]+\,[0-9]+\)").unwrap();
+
+    re.find_iter(input)
+        .map(|substring| Mul::from(substring.as_str()))
+        .map(|mul| mul.num1 * mul.num2)
+        .sum()
 }
 
 fn part2(input: &str) -> i32 {
@@ -39,19 +63,19 @@ fn part2(input: &str) -> i32 {
 mod tests {
     use super::*;
 
-    // #[test]
-    // fn part1_input1() {
-    //     let contents: String = const_contents();
+    #[test]
+    fn part1_input1() {
+        let contents: String = const_contents();
 
-    //     assert_eq!(part1(&contents), todo!("Setup test output 1 for part1"))
-    // }
+        assert_eq!(part1(&contents), 161)
+    }
 
-    // #[test]
-    // fn part1_input2() {
-    //     let contents = file_contents();
+    #[test]
+    fn part1_input2() {
+        let contents = file_contents();
 
-    //     assert_eq!(part1(&contents), todo!("Setup test output 2 for part1"))
-    // }
+        assert_eq!(part1(&contents), 184122457)
+    }
 
     // #[test]
     // fn part2_input1() {
