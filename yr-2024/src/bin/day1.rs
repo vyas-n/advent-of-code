@@ -30,7 +30,7 @@ fn file_contents() -> String {
 fn main() {
     let contents: String = file_contents();
 
-    println!("Answer: {}", part1(&contents))
+    println!("Answer: {}", part2(&contents))
 }
 
 fn part1(input: &str) -> u32 {
@@ -55,7 +55,20 @@ fn part1(input: &str) -> u32 {
 }
 
 fn part2(input: &str) -> u32 {
-    todo!("Setup fn part2")
+    let mut list1 = Vec::<u32>::new();
+    let mut list2 = Vec::<u32>::new();
+
+    input.trim().lines().for_each(|line| {
+        let mut iter = line.split_whitespace();
+
+        list1.push(iter.next().unwrap().parse::<u32>().unwrap());
+        list2.push(iter.next().unwrap().parse::<u32>().unwrap());
+    });
+
+    list1
+        .iter()
+        .map(|num1| (list2.iter().filter(|num2| *num2 == num1).count() as u32) * num1)
+        .sum()
 }
 
 #[cfg(test)]
@@ -76,17 +89,17 @@ mod tests {
         assert_eq!(part1(&contents), 2176849)
     }
 
-    // #[test]
-    // fn part2_input1() {
-    //     let contents: String = const_contents();
+    #[test]
+    fn part2_input1() {
+        let contents: String = const_contents();
 
-    //     assert_eq!(part2(&contents), todo!("Setup test output 1 for part2"))
-    // }
+        assert_eq!(part2(&contents), 31)
+    }
 
-    // #[test]
-    // fn part2_input2() {
-    //     let contents = file_contents();
+    #[test]
+    fn part2_input2() {
+        let contents = file_contents();
 
-    //     assert_eq!(part2(&contents), todo!("Setup test output 2 for part2"))
-    // }
+        assert_eq!(part2(&contents), 23384288)
+    }
 }
