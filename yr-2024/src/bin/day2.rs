@@ -30,7 +30,7 @@ fn file_contents() -> String {
 fn main() {
     let contents: String = file_contents();
 
-    println!("Answer: {}", part1(&contents))
+    println!("Answer: {}", part2(&contents))
 }
 
 fn part1(input: &str) -> usize {
@@ -67,8 +67,63 @@ fn part1(input: &str) -> usize {
         .count()
 }
 
-fn part2(input: &str) -> i32 {
-    todo!("Setup fn part2")
+fn part2(input: &str) -> usize {
+    input
+        .trim()
+        .lines()
+        .map(|line| {
+            // Parse line into report
+            line.split_whitespace()
+                .into_iter()
+                .map(|num| num.parse::<i32>().unwrap())
+                .collect::<Vec<i32>>()
+        })
+        .map(|report| {
+            // convert to list of reports with initial report + 1 level removed
+            let mut reports = Vec::new();
+            reports.push(report.clone());
+            for (report_index, _) in report.iter().enumerate() {
+                let mut sub_report = Vec::new();
+                for index in 0..report_index {
+                    sub_report.push(report[index]);
+                }
+                for index in report_index + 1..report.len() {
+                    sub_report.push(report[index]);
+                }
+                reports.push(sub_report);
+            }
+
+            // // Debug
+            // reports.iter().for_each(|report| {
+            //     println!("{:?}", report);
+            // });
+            // println!("");
+
+            reports
+        })
+        .filter(|reports| {
+            reports.iter().any(|report| {
+                // Filter reports
+                let is_increasing = (0..report.len() - 1)
+                    .map(|index| report[index] < report[index + 1])
+                    .fold(true, |a, b| a && b);
+
+                let is_decreasing = (0..report.len() - 1)
+                    .map(|index| report[index] > report[index + 1])
+                    .fold(true, |a, b| a && b);
+
+                let is_diff_in_range = (0..report.len() - 1)
+                    .map(|index| {
+                        let diff = report[index].abs_diff(report[index + 1]);
+
+                        diff >= 1 && diff <= 3
+                    })
+                    .fold(true, |a, b| a && b);
+
+                (is_increasing || is_decreasing) && is_diff_in_range
+            })
+        })
+        .count()
 }
 
 #[cfg(test)]
@@ -89,12 +144,12 @@ mod tests {
         assert_eq!(part1(&contents), 502)
     }
 
-    // #[test]
-    // fn part2_input1() {
-    //     let contents: String = const_contents();
+    #[test]
+    fn part2_input1() {
+        let contents: String = const_contents();
 
-    //     assert_eq!(part2(&contents), todo!("Setup test output 1 for part2"))
-    // }
+        assert_eq!(part2(&contents), 4)
+    }
 
     // #[test]
     // fn part2_input2() {
